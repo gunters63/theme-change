@@ -1,4 +1,4 @@
-function themeToggle() {
+function themeToggle(dontAttach) {
   function setTheme() {
     var toggleEl = document.querySelector("[data-toggle-theme]");
     (function (theme = localStorage.getItem("theme")) {
