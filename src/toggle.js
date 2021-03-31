@@ -1,5 +1,5 @@
 function themeToggle() {
-  document.addEventListener("DOMContentLoaded", function (event) {
+  function setTheme() {
     var toggleEl = document.querySelector("[data-toggle-theme]");
     (function (theme = localStorage.getItem("theme")) {
       if (localStorage.getItem("theme")) {
@@ -36,5 +36,10 @@ function themeToggle() {
         });
       });
     }
-  });
+  }
+  if (dontAttach)
+    setTheme()
+  else {
+    document.addEventListener("DOMContentLoaded", setTheme)
+  }
 }

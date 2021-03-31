@@ -1,5 +1,5 @@
-function themeSelect() {
-  document.addEventListener("DOMContentLoaded", function (event) {
+function themeSelect(dontAttach) {
+  function setTheme() {
     (function (theme = localStorage.getItem("theme")) {
       if (localStorage.getItem("theme")) {
         document.documentElement.setAttribute("data-theme", theme);
@@ -22,5 +22,10 @@ function themeSelect() {
         });
       });
     }
-  });
+  }
+  if (dontAttach)
+    setTheme()
+  else {
+    document.addEventListener("DOMContentLoaded", setTheme)
+  }
 }

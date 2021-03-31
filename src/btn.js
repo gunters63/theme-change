@@ -1,5 +1,5 @@
-function themeBtn() {
-  document.addEventListener("DOMContentLoaded", function (event) {
+function themeBtn(dontAttach) {
+  function setTheme() {
     (function (theme = localStorage.getItem("theme")) {
       if (localStorage.getItem("theme")) {
         document.documentElement.setAttribute("data-theme", theme);
@@ -27,5 +27,10 @@ function themeBtn() {
         el.classList.add(el.getAttribute('data-act-class'));
       });
     });
-  });
+  }
+  if (dontAttach)
+    setTheme()
+  else {
+    document.addEventListener("DOMContentLoaded", setTheme)
+  }
 }
